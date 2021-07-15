@@ -11,10 +11,10 @@ export default class Product extends React.Component{
                 height:280,
                 width:160,
                 borderRadius:20,
-                marginTop:this.props.marginTop,
+               // marginTop:this.props.marginTop,
                 marginRight:10
             }} >
-              <View style={{ flexDirection:"row", alignItems:"center", alignSelf:"center", marginTop:20 }}>
+              <View style={{ flexDirection:"row", alignItems:"center", alignSelf:"center", marginTop:15 }}>
                   <Text style={{ paddingHorizontal:10,fontWeight:"bold",fontSize:16 }}>Comida para mascotas</Text>
               </View>
               <Image source={this.props.image}

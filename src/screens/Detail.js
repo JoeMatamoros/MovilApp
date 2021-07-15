@@ -27,7 +27,7 @@ export default class Detail extends React.Component{
             <View style={{width:"10%"}}>
             <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
                 <Image source={require('../images/2.png')} />
-                </TouchableOpacity>
+            </TouchableOpacity>
             </View>
 
             <View style={{width:"80%",alignItems:"center"}}>
@@ -66,10 +66,10 @@ export default class Detail extends React.Component{
                    </View>
 
                    <View style={{ flexDirection:"row",alignItems:"center", marginHorizontal:20, marginTop:30 }}>
-                       <View>
+                      <View>
                         <Text style={{ fontWeight:"bold", fontSize:25 }}>Purina</Text>
                         <Text style={{ fontWeight:"bold", fontSize:15, color:"#a4a4a9" }}> Los canes aman esto</Text>
-                       </View>
+                      </View>
                       <Text style={{ fontWeight:"bold", fontSize:28, marginLeft:80 }}>$20.99</Text>
                    </View>
                   

@@ -20,8 +20,8 @@ export default class Home extends React.Component{
         </View>
                
         <View style={{paddingHorizontal:20, marginTop:50}}>
-          <Text style={{fontSize:30, fontWeight:"bold"}}>Clothes</Text>
-          <Text style={{ fontSize:30, fontWeight:"bold"}}>La moda está aquí</Text>
+          <Text style={{fontSize:30, fontWeight:"bold"}}>VETERINARIA HN</Text>
+          <Text style={{ fontSize:30, fontWeight:"bold"}}>Donde tus mascotas son felices</Text>
          </View>
 
 
@@ -35,7 +35,7 @@ export default class Home extends React.Component{
             paddingVertical:5,
             paddingHorizontal:15}}>
             <Image source={require('../images/flores.jpg')} style={{height:40,width:40, borderRadius:15}}/>
-            <Text style={{ fontWeight:"bold",fontSize:18, paddingLeft:10}}>
+            <Text style={{ fontWeight:"bold",fontSize:18, paddingLeft:10}} onPress={()=>this.props.navigation.navigate('Primavera')}>
                 Primavera
             </Text>
         </View>
@@ -88,7 +88,7 @@ export default class Home extends React.Component{
         flexDirection:"row",
         marginTop:40 }}>
       <View style={{width:"50%" }}>
-         <Text style={{ fontSize:22, fontWeight:"bold"}}>Nuevos Productos</Text>
+         <Text style={{ fontSize:22, fontWeight:"bold"}}>Pantalla principal</Text>
       </View>
         <View style={{width:"50%",alignItems:"flex-end"}}>
           <Icon name="dots-three-horizontal" size={25} color="#848385" />
@@ -99,7 +99,8 @@ export default class Home extends React.Component{
     <View style={{ flexDirection:"row", marginHorizontal:15, marginTop:30, }}>
        <Product image={require("../images/chaqueta.jpg")} title="Chaqueta Pacco Rabanne" price="12.99"
            onPress={() => this.props.navigation.navigate('Detail')} />
-        <Product image={require("../images/primavera.jpeg")} title="Vestido de primavera" price="10.99" marginTop={25} />
+        <Product image={require("../images/primavera.jpeg")} title="Vestido de primavera" price="10.99" marginTop={25}
+        onPress={()=> this.props.navigation.navigate('Detail2')} />
     </View>
 
     <View style={{flexDirection:"row", marginHorizontal:15, marginTop:30, }}>
