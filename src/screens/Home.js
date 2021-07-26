@@ -91,7 +91,7 @@ export default class Home extends React.Component{
          <Text style={{ fontSize:22, fontWeight:"bold"}}>Pantalla principal</Text>
       </View>
         <View style={{width:"50%",alignItems:"flex-end"}}>
-          <Icon name="dots-three-horizontal" size={25} color="#848385" />
+          <Icon name="dots-three-horizontal" size={25} color="#848385" onPress={()=>this.props.navigation.navigate('Citas')}/>
         </View>
     </View>
                   
@@ -104,7 +104,8 @@ export default class Home extends React.Component{
     </View>
 
     <View style={{flexDirection:"row", marginHorizontal:15, marginTop:30, }}>
-      <Product image={require("../images/6.png")} title="Adios Pizza" price="11.99" />
+      <Product image={require("../images/6.png")} title="Tabla Pizza" price="11.99"
+      onPress={()=>this.props.navigation.navigate('Horario')} />
        <Product image={require("../images/10.png")} title="Burrito" price="10.99" marginTop={25} />
     </View>
 

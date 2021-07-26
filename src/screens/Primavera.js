@@ -2,6 +2,9 @@ import React from 'react'
 import {View,Text, Image} from 'react-native'
 import { ScrollView, TouchableOpacity} from 'react-native-gesture-handler'
 import Icon from '@expo/vector-icons/Entypo'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 export default class Primavera extends React.Component{
     state={
@@ -29,17 +32,15 @@ export default class Primavera extends React.Component{
 
             <View style={{width:"80%",alignItems:"center"}}>
             <View style={{flexDirection:"row", alignItems:"center", alignSelf:"center" }}>
-                <Image source={require('../images/3.png')} style={{height:25,width:20}} />
-                <Text style={{ paddingHorizontal:10, fontWeight:"bold", fontSize:16 }}>Pantalla de primavera</Text>
+                <Text style={{ paddingHorizontal:10, fontWeight:"bold", fontSize:16 }}>Pantalla de demostración</Text>
                 </View>
             </View>
 
-            <View style={{width:"10%"}}>
-                    <Icon name="heart" color="#f9dd7a" size={30} />
-            </View>
             </View> 
           </ScrollView>
         </View>
+        
+        
         );
     }
 

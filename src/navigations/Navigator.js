@@ -4,6 +4,9 @@ import Home from '../screens/Home';
 import Detail from '../screens/Detail';
 import Detail2 from '../screens/Detail2';
 import Primavera from '../screens/Primavera';
+import Admin from '../screens/Admin';
+import Citas from '../screens/Citas';
+import Horario from '../screens/Horario';
 
 const Stack  = createStackNavigator();
 const screenOptionStyle = {
@@ -16,6 +19,9 @@ const HomeStackNavigator = () =>{
         <Stack.Screen name="Detail" component={Detail}/>
         <Stack.Screen name="Detail2" component={Detail2}/>
         <Stack.Screen name ="Primavera" component={Primavera}/>
+        <Stack.Screen name="Admin" component={Admin}/>
+        <Stack.Screen name="Citas" component={Citas}/>
+        <Stack.Screen name="Horario" component={Horario}/>
     </Stack.Navigator>
 }
 export default HomeStackNavigator;
