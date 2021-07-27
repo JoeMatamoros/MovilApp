@@ -106,7 +106,7 @@ export default class Home extends React.Component{
     <View style={{flexDirection:"row", marginHorizontal:15, marginTop:30, }}>
       <Product image={require("../images/6.png")} title="Tabla Pizza" price="11.99"
       onPress={()=>this.props.navigation.navigate('Horario')} />
-       <Product image={require("../images/10.png")} title="Burrito" price="10.99" marginTop={25} />
+       <Product image={require("../images/10.png")} title="Taco de birria" price="10.99" marginTop={25} />
     </View>
 
 </ScrollView>

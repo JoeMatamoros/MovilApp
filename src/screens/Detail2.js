@@ -1,22 +1,23 @@
 import React from 'react'
-import {View,Text, Image} from 'react-native'
+import {View,Text, Image, StyleSheet} from 'react-native'
 import { ScrollView, TouchableOpacity} from 'react-native-gesture-handler'
 import Icon from '@expo/vector-icons/Entypo'
+import CalendarPicker from 'react-native-calendar-picker';
+
 
 export default class Detail2 extends React.Component{
-    state={
-        quantity:1
+    constructor(props){
+        super(props);
+        this.state ={ selectedStartDate: null }
+        this.onDateChange = this.onDateChange.bind(this);
     }
-    addQuantity = (quantity) =>{
-        this.setState({quantity: this.state.quantity+1});
+    onDateChange(date){
+        this.setState({selectedStartDate: date});
     }
-
-    subtractQuantity = (quantity) =>{
-        if(this.state.quantity > 0){
-            this.setState({quantity: this.state.quantity -1});
-        }
-    }
+    
     render(){
+        const { selectedStartDate } = this.state;
+        const startDate = selectedStartDate ? selectedStartDate.toString() : '';
         return(
         <View style={{backgroundColor:"#FFF"}}>
           <ScrollView>
@@ -33,10 +34,22 @@ export default class Detail2 extends React.Component{
                 </View>
             </View>
             </View> 
+            <View style={styles.container}>
+              <CalendarPicker onDateChange={this.onDateChange} />
+            </View>
+            <View>
+                <Text>FECHA:{startDate}</Text>
+            </View>
           </ScrollView>
         </View>
         );
     }
-
-
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#FFFFFF',
+      marginTop: 100,
+    },
+  });

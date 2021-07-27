@@ -23,7 +23,7 @@ export default class Product extends React.Component{
                   {this.props.title}
               </Text>
               <Text style={{ fontSize:15, fontWeight:"bold", paddingHorizontal:10, color:"#848385" }}>
-                  Veterinaria
+                  Veterinaria Huellitas
               </Text>
           </TouchableOpacity>
         )

@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, View,Text, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, View,Text, SafeAreaView, ScrollView, Image, Button } from 'react-native';
 import { Table, Row, Rows } from 'react-native-table-component';
+import CalendarPicker from 'react-native-calendar-picker';
+import {TouchableOpacity} from 'react-native-gesture-handler'
 import axios from 'axios';
 
 axios.defaults.baseURL='http://192.168.0.2:3002';
@@ -10,24 +12,19 @@ export default class Horario extends React.Component {
   constructor(props) {
     super(props);
     /*ESTADO PARA DEFINIR EL VECTOR Y LOS ENCABEZADOS*/
-    this.state = { bandera: true, horarios: [], tableHead:["IdHorario","Descripcion"] }
-
-     /*ESTO IGNORENLO */
-    this.handleChange = this.handleChange.bind(this);
-  }
-  /*ESTO IGNORENLO */
- handleChange(event){
-    this.setState({});
+    this.state = { bandera: true,selectedStartDate: null ,horarios: [], tableHead:["IdHorario","Descripción"] }
+    this.onDateChange = this.onDateChange.bind(this);    
   }
 
+  onDateChange(date){
+    this.setState({selectedStartDate: date});
+  }
   /*FUNCION DE INICIO AL ENTRAR EN LA PANTALLA */
   inicio(){
-    //VARIABLES "BANDERA" PARA SABER SI ESTA VACIO O NO
+    //VARIABLES "BANDERA" PARA SABER SI EL VECTOR ESTA VACIO O NO
     const { bandera } = this.state;
-
     //VECTOR PARA RECORRER LA TABLA EN LA BDD
     const horario = [];
-
     //CONTADOR
     var j = 0;
 
@@ -35,7 +32,6 @@ export default class Horario extends React.Component {
       //PETICIO A LA API... Y PARA QUE VEAN QUE NO ESTOY LOCO
       axios.get('/api/horarios/obtenerHorarios').then((respuesta)=>{
         console.log("Hola de nuevo");
-
         //CICLO DO WHILE PARA LLENAR Y RECORRER LOS DATOS EN LA TABLA DE LA BDD
         do{
           horario.push( [respuesta.data[j].Id_horario, respuesta.data[j].Descrip_horario] );
@@ -44,6 +40,7 @@ export default class Horario extends React.Component {
             break;
           }
        } while(j<10);
+
         console.log(horario);
         this.setState({horarios: horario});
 
@@ -133,6 +130,8 @@ styles = StyleSheet.create({
 });
   
   render() {
+    const { selectedStartDate } = this.state;
+    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
     //VARIABLES DE ESTADO PARA DATA EN TABLE
     const {horarios, tableHead} = this.state;
     //LLAMADO A LA FUNCION CUANDO SE RENDERICE LA PAGINA
@@ -140,24 +139,48 @@ styles = StyleSheet.create({
     return (
      <SafeAreaView>
        <ScrollView style = {this.estilos.contenedor}>
+         <View style={{ flexDirection:"row", alignItems:"center",marginTop:40, marginHorizontal:20 }}>
+            <View style={{width:"10%"}}>
+              <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
+                <Image source={require('../images/2.png')} />
+              </TouchableOpacity>
+          </View>
+          <View style={{width:"80%",alignItems:"center"}}>
+            <View style={{flexDirection:"row", alignItems:"center", alignSelf:"center" }}>
+              <Text style={{ paddingHorizontal:10, fontWeight:"bold", fontSize:16 }}>Horarios de consultas</Text>
+            </View>
+          </View>
+        </View>
        <View style={this.styles.container}>
           <Table borderStyle={{borderWidth: 2, borderColor: '#000'}}>
-          
-            <Row data={tableHead} style={this.styles.head} textStyle={this.styles.text}/>
-            <Rows data={horarios} textStyle={this.styles.text}/>
-
+             <Row data={tableHead} style={this.styles.head} textStyle={this.styles.text}/>
+             <Rows data={horarios} textStyle={this.styles.text}/>
           </Table>
         </View>
-       </ScrollView>
-       
-     </SafeAreaView>
+        <View style={StyleFecha.container}>
+          <CalendarPicker onDateChange={this.onDateChange} />
+        </View>
+        <View>
+          <Text>FECHA SELECCIONADA:{startDate}</Text>
+        </View>
 
+         <View style={this.estilos.contenedorBotones}>
+           <View style={this.estilos.boton}>
+            <Button title="Agendar" color="#fff" accessibilityLabel="Envia código por correo" />
+           </View>
+         </View>
+       </ScrollView>  
+     </SafeAreaView>
     );
   }
 }
- 
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-  head: { height: 40, backgroundColor: '#f1f8ff' },
-  text: { margin: 6 }
+
+const StyleFecha = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    marginTop: 100,
+  },
 });
+ 
+
