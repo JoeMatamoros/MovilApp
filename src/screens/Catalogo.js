@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import Icon from "@expo/vector-icons/Entypo"
 import Product from '../components/Product'
 
-export default class Home extends React.Component{
+export default class Catalogo extends React.Component{
     render(){
     return(
 <ScrollView style={{backgroundColor:"#FFF"}}>
@@ -20,12 +20,12 @@ export default class Home extends React.Component{
         </View>
                
         <View style={{paddingHorizontal:20, marginTop:50}}>
-          <Text style={{fontSize:30, fontWeight:"bold"}}>VETERINARIA HN</Text>
-          <Text style={{ fontSize:30, fontWeight:"bold"}}>Donde tus mascotas son felices</Text>
+          <Text style={{fontSize:30, fontWeight:"bold"}}>Catalogo</Text>
+          <Text style={{ fontSize:30, fontWeight:"bold"}}>Explora nuestro catalogo</Text>
          </View>
 
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{marginTop:40}}>
+ <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{marginTop:40}}>
          <View style={{
             alignItems:"center",
             flexDirection:"row",
@@ -47,8 +47,8 @@ export default class Home extends React.Component{
               borderRadius:25,
               paddingVertical:5,
               paddingHorizontal:15 }}>
-                <Image source={{uri:'file:///var/mobile/Containers/Data/Application/24BF6A57-5B72-4637-9CE1-4164AD80BF22/Library/Caches/ExponentExperienceData/%2540anonymous%252FVeterinaria-e3bb15be-d283-4dd9-8cd0-8a524cd5eb98/ImagePicker/14CE39F0-BD4A-4B23-B829-BB983497EF00.jpg'}} style={{height:40,width:40, borderRadius:10}} />
-                <Text style={{ fontWeight:"bold", fontSize:18, paddingLeft:10}} onPress={(this.props.navigation.navigate('Response'))}>
+                <Image source={require('../images/3.png')} style={{height:40,width:40, borderRadius:10}} />
+                <Text style={{ fontWeight:"bold", fontSize:18, paddingLeft:10}}>
                   Verano
                 </Text>
             </View>
@@ -80,7 +80,7 @@ export default class Home extends React.Component{
                   Invierno
                 </Text>
             </View>
-        </ScrollView>
+ </ScrollView>
 
     <View style={{
         alignItems:"center",
@@ -97,16 +97,16 @@ export default class Home extends React.Component{
                   
                   
     <View style={{ flexDirection:"row", marginHorizontal:15, marginTop:30, }}>
-       <Product image={require("../images/chaqueta.jpg")} title="Chaqueta Pacco Rabanne" price="12.99"
+       <Product image={require("../images/chaqueta.jpg")} title="Purina" price="12.99"
            onPress={() => this.props.navigation.navigate('Detail')} />
-        <Product image={require("../images/primavera.jpeg")} title="Vestido de primavera" price="10.99" marginTop={25}
+        <Product image={require("../images/primavera.jpeg")} title="Shampoo antipulgas" price="10.99" marginTop={25}
         onPress={()=> this.props.navigation.navigate('Detail2')} />
     </View>
 
     <View style={{flexDirection:"row", marginHorizontal:15, marginTop:30, }}>
-      <Product image={require("../images/6.png")} title="Tabla Pizza" price="11.99"
+      <Product image={require("../images/6.png")} title="Huesitos de goma" price="11.99"
       onPress={()=>this.props.navigation.navigate('Horario')} />
-       <Product image={require("../images/10.png")} title="Taco de birria" price="10.99" marginTop={25} />
+       <Product image={require("../images/10.png")} title="Pedigree's pollito" price="10.99" marginTop={25} />
     </View>
 
 </ScrollView>

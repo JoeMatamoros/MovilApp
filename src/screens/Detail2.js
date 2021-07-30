@@ -24,7 +24,7 @@ export default class Detail2 extends React.Component{
             <View style={{ flexDirection:"row", alignItems:"center",marginTop:40, marginHorizontal:20 }}>
             <View style={{width:"10%"}}>
             <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
-                <Image source={require('../images/2.png')} />
+                <Image source={{uri: 'file:///var/mobile/Containers/Data/Application/24BF6A57-5B72-4637-9CE1-4164AD80BF22/Library/Caches/ExponentExperienceData/%2540anonymous%252FVeterinaria-e3bb15be-d283-4dd9-8cd0-8a524cd5eb98/ImagePicker/14CE39F0-BD4A-4B23-B829-BB983497EF00.jpg'}} />
             </TouchableOpacity>
             </View>
 

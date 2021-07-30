@@ -12,7 +12,7 @@ export default class Horario extends React.Component {
   constructor(props) {
     super(props);
     /*ESTADO PARA DEFINIR EL VECTOR Y LOS ENCABEZADOS*/
-    this.state = { bandera: true,selectedStartDate: null ,horarios: [], tableHead:["IdHorario","Descripción"] }
+    this.state = { bandera: true, selectedStartDate: null ,horarios: [], tableHead:["IdHorario","Descripción"] }
     this.onDateChange = this.onDateChange.bind(this);    
   }
 
