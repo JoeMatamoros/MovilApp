@@ -1,3 +1,4 @@
+/*DESARROLLADO POR: JOSE A ORDOÑEZ M */
 import React,{useState} from 'react'
 import {View,Text, Image, Picker, StyleSheet, Button, Alert, AppRegistry, Platform, ActivityIndicator} from 'react-native'
 import { ScrollView, TouchableOpacity} from 'react-native-gesture-handler'

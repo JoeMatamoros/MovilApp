@@ -1,3 +1,4 @@
+/*DESARROLLADO POR: JOSE A ORDOÑEZ M */
 import React from 'react'
 import {View,Image,Picker, Text} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
