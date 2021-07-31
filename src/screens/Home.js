@@ -47,8 +47,8 @@ export default class Home extends React.Component{
               borderRadius:25,
               paddingVertical:5,
               paddingHorizontal:15 }}>
-                <Image source={{uri:'file:///var/mobile/Containers/Data/Application/24BF6A57-5B72-4637-9CE1-4164AD80BF22/Library/Caches/ExponentExperienceData/%2540anonymous%252FVeterinaria-e3bb15be-d283-4dd9-8cd0-8a524cd5eb98/ImagePicker/14CE39F0-BD4A-4B23-B829-BB983497EF00.jpg'}} style={{height:40,width:40, borderRadius:10}} />
-                <Text style={{ fontWeight:"bold", fontSize:18, paddingLeft:10}} onPress={(this.props.navigation.navigate('Response'))}>
+                <Image source={{uri:'https://firebasestorage.googleapis.com/v0/b/veterinaria-90fe1.appspot.com/o/2021-07-30T07%3A13%3A11.879Z?alt=media&token=1865237f-230b-43f5-88a9-b158ffb403b7'}} style={{height:40,width:40, borderRadius:10}} />
+                <Text style={{ fontWeight:"bold", fontSize:18, paddingLeft:10}}>
                   Verano
                 </Text>
             </View>

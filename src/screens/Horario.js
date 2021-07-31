@@ -5,7 +5,7 @@ import CalendarPicker from 'react-native-calendar-picker';
 import {TouchableOpacity} from 'react-native-gesture-handler'
 import axios from 'axios';
 
-axios.defaults.baseURL='http://192.168.0.2:3002';
+axios.defaults.baseURL='http://192.168.0.6:3002';
 axios.defaults.headers.post['Content-Type']='application/json';
 
 export default class Horario extends React.Component {

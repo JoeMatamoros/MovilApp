@@ -4,44 +4,32 @@ import { ScrollView, TouchableOpacity} from 'react-native-gesture-handler'
 import Icon from '@expo/vector-icons/Entypo'
 import axios from 'axios'
 
-axios.defaults.baseURL='http://192.168.0.2:3002';
+axios.defaults.baseURL='http://192.168.0.6:3002';
 axios.defaults.headers.post['Content-Type']='application/json';
 
 export default class Citas extends React.Component{
-  //state ={ cita:[], mascotas:[]}
+  
   constructor(props){
     super(props);
-    this.state ={ mascotasLabel:'', aviso: true, mascotas:[], isLoading: true, PickerValueHolder:''}
-   // this.show = this.show(this);
+    this.state = { isLoading: true,  PickerValueHolder : '' }
   }
-
-    listar(){
-      const { aviso } = this.state;
-      const id = 1;
-      const mascota = [];
-      var j = 0;
-
-      if(aviso === true){
-        axios.get('/api/historial/listar/'+id).then((respuesta)=>{
-          console.log("MascotasCliente");
-          do {
-            mascota.push([respuesta.data[j].Nom_mascotas]);
-            j++;
-            if(respuesta.data[j] === undefined){
-              break;
-            }
-          }while(j<10);
-
-          console.log(mascota);
-          this.setState({mascotas: mascota});
-
-        }).catch((error)=>{
-          console.log(error);
-        });
-        this.setState({aviso: false})
-      }
-    }
-
+  
+  componentDidMount() {
+    
+       return fetch('http://192.168.0.6:3002/api/historial/listar/1')
+         .then((response) => response.json())
+         .then((responseJson) => {
+           this.setState({
+             isLoading: false,
+             dataSource: responseJson
+           }, function() {
+             // In this block you can do something with new state.
+           });
+         }).catch((error) => {
+           console.error(error);
+         });
+     }
+  
     estilos=StyleSheet.create({
       contenedor:{
           paddingHorizontal:20
@@ -115,9 +103,13 @@ export default class Citas extends React.Component{
       }
   });
     render(){
-      const { mascotas, mascotasLabel, show } = this.state;
-      this.listar();
-  
+      if (this.state.isLoading) {
+        return (
+          <View style={{flex: 1, paddingTop: 20}}>
+            <ActivityIndicator />
+          </View>
+        );
+      }
         return(
         <View style={{backgroundColor:"#FFF"}}>
           <ScrollView>
@@ -136,12 +128,14 @@ export default class Citas extends React.Component{
            </View>
         </ScrollView>
 
-          <View style={{ flex: 1, paddingTop: 0, alignItems:"center" }}>
-            <Picker selectedValue={this.state.mascotasLabel} style={{ height: 50, width: 150 }}
-                onValueChange={(itemValue,itemIndex)=>this.setState({mascotas: itemValue})}>
-           
-           </Picker>
-        </View>
+        <View style={styles.MainContainer}>
+          <Picker selectedValue={this.state.PickerValueHolder}
+            onValueChange={(itemValue, itemIndex) => this.setState({PickerValueHolder: itemValue})} >
+            { this.state.dataSource.map((item, key)=>(
+            <Picker.Item label={item.Nom_mascotas} value={item.Nom_mascotas} key={key} />)
+            )}
+          </Picker>
+       </View>
 
          <View style={this.estilos.contenedorBotones}>
             <View style ={this.estilos.boton}>
@@ -159,5 +153,16 @@ export default class Citas extends React.Component{
 
 }
 
+ 
+const styles = StyleSheet.create({
+ 
+  MainContainer :{
+   
+  justifyContent: 'center',
+  flex:1,
+  margin: 10
+  }
+   
+  });
 
 
